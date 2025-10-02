@@ -73,3 +73,9 @@ AJUSTES.md<br>
 5. ajustar KeyPad para enviar dígitos
 6. atualizar Main para simular discagem
 7. adicionar histórico de prompts e ajustes da IA
+
+Cada commit foi acompanhado de comentários no código e referência em **PROMPTS.md** e **AJUSTES.md**.
+
+## 👨‍💻 Autores
+Pedro Victor da Silva Pereira
+Valéria Cristina
