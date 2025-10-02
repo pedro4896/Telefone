@@ -1,19 +1,32 @@
-package src;
+package telephone;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Store a phone number, digit-by-digit
+ * Modelo do telefone.
+ * Armazena o número atual e notifica observadores (UI).
+ * Não sabe nada sobre a tela -> aplica Observer corretamente.
+ *
+ *  - Adiciona lista de observers.
+ *   - Implementa método insertDigit() e notifyObservers().
  */
 public class PhoneModel {
-    private List<Integer> digits = new ArrayList<>();
+    private final List<PhoneObserver> observers = new ArrayList<>();
+    private final StringBuilder currentNumber = new StringBuilder();
 
-    public void addDigit(int newDigit) {
-        digits.add(newDigit);
+    public void addObserver(PhoneObserver observer) {
+        observers.add(observer);
     }
 
-    public List<Integer> getDigits() {
-        return digits;
+    public void insertDigit(String digit) {
+        currentNumber.append(digit);
+        notifyObservers(digit);
+    }
+
+    private void notifyObservers(String digit) {
+        for (PhoneObserver obs : observers) {
+            obs.digitInserted(digit, currentNumber.toString());
+        }
     }
 }
